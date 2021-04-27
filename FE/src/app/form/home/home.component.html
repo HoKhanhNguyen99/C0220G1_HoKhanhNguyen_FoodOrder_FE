@@ -2,12 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
   <title>Title</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <div class="container-fruit">
@@ -62,10 +57,10 @@
         </li>
       </ul>
     </div>
-    <form class="form-inline my-2 my-lg-0 pull-right" >
+    <form class="form-inline my-2 my-lg-0 pull-right" (ngSubmit)="search()">
       <div class="input-group">
         <div class="form-outline">
-          <input type="search" id="form1" class="form-control" placeholder="Search" />
+          <input [(ngModel)]="foodName" type="search" id="form1" class="form-control" placeholder="Search" name="foodName"/>
           <label class="form-label" for="form1"></label>
         </div>
         <button type="button" class="btn btn-primary">
@@ -96,40 +91,14 @@
     <div class="col-md-8 bg-light text-center">
       <h2>Danh sách các món ăn</h2>
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4"  *ngFor="let food of foodList">
           <div class="card ">
             <button class="btn"><img class="card-img-top" height="200px"
-                    src="https://andemdanang.com/wp-content/uploads/2018/09/C%C6%A1m-th%E1%BB%91-%E1%BA%BFch-%C4%90%C3%A0-N%E1%BA%B5ng-601x400.jpg"
-                    alt="Card image cap"></button>
+                                     src="{{food.img}}"
+                                     alt="Card image cap"></button>
             <div class="card-body">
-              <h3 class="card-title">Cơm hến Hiếu Trần</h3>
-              <p class="card-text">20.000 VNĐ</p>
-              <a href="#" class="btn btn-primary">Mua Ngay!</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <button class="btn"><img class="card-img-top" height="200px"
-                 src="https://giadinh.tv/wp-content/uploads/2018/12/anh-2.jpg"
-                 alt="Card image cap">
-            </button>
-            <div class="card-body">
-              <h3 class="card-title">Cơm gà Nguyên Béo</h3>
-              <p class="card-text">25.000 VNĐ</p>
-              <a href="#" class="btn btn-primary">Mua Ngay!</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card ">
-            <button class="btn"><img class="card-img-top" height="200px"
-                 src="https://i.ytimg.com/vi/YXRS3MV5xpY/maxresdefault.jpg"
-                 alt="Card image cap">
-            </button>
-            <div class="card-body">
-              <h3 class="card-title">Cơm chiên Xe Lớn</h3>
-              <p class="card-text">20.000 VNĐ</p>
+              <h3 class="card-title">{{food.foodName}}</h3>
+              <p class="card-text">{{food.price}} VNĐ</p>
               <a href="#" class="btn btn-primary">Mua Ngay!</a>
             </div>
           </div>
@@ -140,16 +109,58 @@
     </div>
   </div>
 </div>
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-  </div>
-</div>
+<footer class="bg-light text-center text-lg-start">
+  <!-- Grid container -->
+  <div class=" p-4" style="background-color: rgba(0, 0, 0, 0.2);">
+    <!--Grid row-->
+    <div class="row">
+      <!--Grid column-->
+      <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+        <strong class="text-uppercase mr-3">Công ty cổ phần Foody</strong>
+        <img src="https://www.now.vn/app/assets/img/Logo-Nowvn-Elip.png?e398e9326ddac9d81cae2dfce3c1d96c" width="80">
+      </div>
+      <!--Grid column-->
 
+      <!--Grid column-->
+      <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+        <h5 class="text-uppercase">Địa chỉ công ty</h5>
+        <p class="m-0"><small>Công Ty Cổ Phần Foody</small></p>
+        <p class="m-0"><small>Lầu G, Tòa nhà Jabes 1,</small></p>
+        <p class="m-0"><small>số 244 đường Cống Quỳnh, phường Phạm Ngũ Lão, Quận 1, TPHCM</small></p>
+        <p class="m-0"><small>Giấy CN ĐKDN số: 0311828036</small></p>
+        <p class="m-0"><small>do Sở Kế hoạch và Đầu tư TP.HCM cấp ngày 11/6/2012,</small></p>
+        <p class="m-0"><small>sửa đổi lần thứ 23, ngày 10/12/2020</small></p>
+        <p class="m-0"><small>Số điện thoại: 1900 2042</small></p>
+        <p class="m-0"><small>Email: info@now.vn</small></p>
+      </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row-->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    <small class="text-dark" >   © 2020 Copyright: </small>
+    <small class="text-dark" >A Foody Corporation</small>
+    <section class="mb-4">
+      <!-- Facebook -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+      ><i class="fab fa-facebook-f"></i
+      ></a>
+
+      <!-- Twitter -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+      ><i class="fab fa-twitter"></i
+      ></a>
+
+      <!-- Google -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+      ><i class="fab fa-google"></i
+      ></a>
+    </section>
+  </div>
+  <!-- Copyright -->
+</footer>
 </body>
 </html>
